@@ -20,7 +20,7 @@ def get_info():
                 raise NameError("Слишком короткая фамилия ")
             phone_numbers = input("Введите номер телефона: ")
             if len(phone_numbers) < 11:
-                raise NameError("Слишком короткый номер")
+                raise NameError("Слишком короткий номер")
         except NameError as err:
             print(err)
         else:
