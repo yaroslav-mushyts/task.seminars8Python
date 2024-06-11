@@ -68,7 +68,7 @@ def remove_row(file_name):
     res = read_file(file_name)     
     if search <= len(res):
         res.pop(search - 1)
-        print("Файл очищен")
+        print("Файл удален")
         standar_write(file_name,res)
     else:
         print("Введен неверный номер строки")      
@@ -92,15 +92,20 @@ file_name2 = "phone2.csw"
 
 
 def copy_data(file_name):
+    search = int(input("Введите строку которую хотите скопировать  "))
     res = read_file(file_name)
-    standar_write(file_name2, res)
-    
+    res2 = read_file(file_name2)
+    if len(res) != 0:
+        res2.append(res[search - 1])
+        standar_write(file_name2, res2)
+    else:
+        print("В данном файле нет контактов")
    
     
 
 def main():
     while True:
-        command = input("\n Команда (q) - выйти. \n Команда (r) - просмотр телефонной книжки. \n Команда (w) - добавление абонента И.Ф.Тел. \n Команда (с) - копирование тел. книжки со всеми контактами. \n Команда (r.c) - просмотр копированных контактов в другую тел.книжку \n Команда (d.c) - удаление всех скопированных абонентов \n Введите команду: ")
+        command = input("\n Команда (q) - выйти. \n Команда (r) - просмотр телефонной книжки. \n Команда (w) - добавление абонента И.Ф.Тел. \n Команда (с) - копирование тел. книжки со всеми контактами. \n Команда (r.c) - просмотр копированных контактов \n Команда (d.c) - удаление всех скопированных контактов \n Команда (d) - удаления добавленого контакта \n Введите команду: ")
         if command =="q":
             break
         elif command == "w":
@@ -109,31 +114,31 @@ def main():
             write_file(file_name)
         elif command == "r":
             if not exists(file_name):
-                print("Файл отсутствует, пожалуйста создайте его: ")
+                print("Файл отсутствует, пожалуйста создайте его! ")
                 continue
             elif Size(file_name) == 0:
-                print("Файл пустой, нужно его заполнить")
+                print("Файл пустой, нужно его заполнить!")
                 continue
             print(*read_file(file_name))   
         elif command == "d":
             if not exists(file_name):
-                print("Файл отсутствует, пожалуйста создайте его: ")
+                print("Файл отсутствует, пожалуйста создайте его! ")
                 continue
             remove_row(file_name)
         elif command == "c":
             copy_data(file_name)
-            print("Вы удачно скопировали файл")    
+            print("Вы удачно скопировали файл... ")
         elif command == "r.c":
             if not exists(file_name2):
-                print("Файл отсутствует: ")
+                print("Файл отсутствует!!! ")
                 continue
             elif Size(file_name2) == 0:
-                print("Файл пустой")
+                print("Файл пустой!!!")
                 continue
             print(*read_file(file_name2)) 
         elif command == "d.c":
             delet(file_name2)
-            print("Файл очищен")
+            print("Файл очищен....")
                 
                 
 
