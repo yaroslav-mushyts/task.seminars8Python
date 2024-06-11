@@ -92,7 +92,7 @@ file_name2 = "phone2.csw"
 
 
 def copy_data(file_name):
-    search = int(input("Введите строку которую хотите скопировать  "))
+    search = int(input("Введите номер строки для копирования  "))
     res = read_file(file_name)
     res2 = read_file(file_name2)
     if len(res) != 0:
